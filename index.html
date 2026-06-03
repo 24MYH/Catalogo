@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catálogo Real HD - Merlty Impresiones</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;family=Urbanist:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: #0f1115;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            align-items: center;
+            padding: 60px 0;
+        }
+
+        .single-page {
+            width: 1280px;
+            height: 1800px;
+            background: #ffffff;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.8);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .page-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 6% 8%;
+        }
+
+        .portada-wrapper {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 120px 0;
+            background: #ffffff;
+        }
+
+        .portada-logo { width: 650px; }
+
+        .title-badge-container { position: relative; padding: 20px; }
+
+        .title-badge {
+            background-color: #E6007E;
+            border: 14px solid #F36A2D;
+            border-radius: 60px;
+            padding: 70px 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: rotate(-2deg);
+            box-shadow: 25px 25px 0px rgba(243,106,45,0.2);
+        }
+
+        .title-badge h1 {
+            color: #ffffff;
+            font-size: 110px;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 900;
+            line-height: 1;
+            text-align: center;
+            letter-spacing: -2px;
+        }
+
+        .portada-footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 60px;
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 700;
+            font-size: 28px;
+            color: #222;
+        }
+
+        .info-item i { color: #F36A2D; font-size: 34px; }
+
+        .section-header {
+            border-left: 10px solid #E6007E;
+            padding-left: 25px;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            text-transform: uppercase;
+            color: #111;
+            letter-spacing: 1px;
+        }
+
+        .section-header p {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 28px;
+            color: #666;
+            margin-top: 6px;
+        }
+
+        .mv-vertical-container {
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .mv-block-vertical {
+            background: #fdfdfd;
+            border: 3px solid #f0f0f0;
+            border-left: 14px solid #F36A2D;
+            border-radius: 20px;
+            padding: 45px 50px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.03);
+        }
+
+        .mv-block-vertical h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 40px;
+            color: #E6007E;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .mv-block-vertical p {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 27px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .wave-image-container {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%;
+            height: 900px;
+            z-index: 1;
+            padding: 0 60px;
+            box-sizing: border-box;
+        }
+
+        .wave-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .wave-image-container .full-bg {
+            position: relative;
+            top: auto; left: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .wave-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .session-row-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .session-row {
+            display: grid;
+            grid-template-columns: 1fr 140px 1fr;
+            align-items: center;
+            gap: 30px;
+            height: 460px;
+        }
+
+        .session-card {
+            height: 100%;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border: 2px solid #f0f0f0;
+        }
+
+        .session-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .price-tag-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .price-badge-circle {
+            width: 130px;
+            height: 130px;
+            background: #ffffff;
+            border: 5px solid #F36A2D;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .price-badge-circle .currency { font-size: 18px; color: #F36A2D; font-weight: 800; }
+        .price-badge-circle .amount { font-size: 38px; color: #E6007E; font-weight: 800; line-height: 1; }
+        .free-glass { font-family: 'Urbanist', sans-serif; font-size: 14px; color: #F36A2D; text-transform: uppercase; font-weight: 900; margin-top: 10px; letter-spacing: 0.5px; }
+
+        .anuario-row-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .anuario-row {
+            display: grid;
+            grid-template-columns: 1fr 140px 1fr;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .anuario-card {
+            width: 100%;
+            height: 600px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            border: 2px solid #f0f0f0;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+        }
+
+        .anuario-card img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .premium-showcase {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: flex-start;
+            gap: 15px;
+        }
+
+        .premium-main-img {
+            width: 100%;
+            height: 850px;
+            object-fit: contain;
+            background: #fdfdfd;
+            border-radius: 12px;
+            border: 2px solid #e5e5e5;
+            margin-top: 40px;
+        }
+
+        .premium-details {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            background: #fdfdfd;
+            border: 2px solid #eee;
+            padding: 35px;
+            border-radius: 12px;
+            margin-top: 200px;
+        }
+
+        .premium-secondary-img {
+            width: 280px;
+            height: 220px;
+            object-fit: contain;
+            border: 2px solid #ddd;
+            background: #fff;
+            border-radius: 8px;
+        }
+
+        .specs-list {
+            list-style: none;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 24px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .specs-list li { display: flex; align-items: center; gap: 12px; }
+        .specs-list li i { color: #F36A2D; font-size: 20px; }
+
+        .new-tag {
+            position: absolute;
+            top: 0; right: 0;
+            background: linear-gradient(135deg, #F36A2D, #E6007E);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 10px 35px;
+            border-bottom-left-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 3;
+        }
+
+        .page-counter {
+            position: absolute;
+            bottom: 30px; right: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            color: #bbb;
+            font-weight: bold;
+            z-index: 5;
+        }
+
+        .light-counter { color: #ffffff !important; text-shadow: 0 3px 6px rgba(0,0,0,0.6); }
+
+        
+
+        
+        html { scroll-behavior: smooth; }
+
+        
+        .single-page {
+            opacity: 1;
+            transform: translateY(0);
+            transition: box-shadow 0.4s ease;
+        }
+
+        
+        .single-page.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
+        .single-page:hover {
+            box-shadow: 0 40px 100px rgba(230, 0, 126, 0.35);
+            transform: translateY(-6px) scale(1.002);
+        }
+
+        
+        .full-bg {
+            transform: scale(1.1);
+            transition: transform 0.1s linear;
+        }
+
+        
+        .section-header, .session-row, .premium-showcase,
+        .anuario-row, .portada-wrapper, .specs-list li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .single-page.visible .section-header { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+        .single-page.visible .session-row:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+        .single-page.visible .session-row:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
+        .single-page.visible .session-row:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+        .single-page.visible .premium-showcase { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+        .single-page.visible .anuario-row { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+        .single-page.visible .portada-wrapper { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+        .single-page.visible .specs-list li:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+        .single-page.visible .specs-list li:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.45s; }
+        .single-page.visible .specs-list li:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+        .single-page.visible .specs-list li:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.75s; }
+
+        
+        .price-badge-circle {
+            transition: transform 0.3s ease;
+        }
+        .price-badge-circle:hover {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        
+        .new-tag {
+            animation: pulse-badge 3s ease-in-out infinite;
+        }
+        @keyframes pulse-badge {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(230,0,126,0.4); }
+            50% { box-shadow: 0 0 20px 8px rgba(230,0,126,0.15); }
+        }
+
+        
+        .session-card img {
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+        .session-card img:hover {
+            transform: scale(1.04);
+            filter: brightness(1.08);
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+        const WA_NUMBER = '51978419756';
+
+        const pages = document.querySelectorAll('.single-page');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.08 });
+        pages.forEach(page => observer.observe(page));
+
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.full-bg').forEach(img => {
+                const rect = img.closest('.single-page').getBoundingClientRect();
+                const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+                img.style.transform = `scale(1.1) translateY(${offset * 60}px)`;
+            });
+        });
+
+        document.querySelectorAll('.page-counter').forEach(counter => {
+            counter.style.cursor = 'pointer';
+            counter.title = 'Ir a la siguiente página';
+            counter.addEventListener('click', () => {
+                const next = counter.closest('.single-page').nextElementSibling;
+                if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        function openWhatsApp(producto, precio, badge) {
+            const msg =
+`🛍️ *Hola Merlty Impresiones!*
+
+Estoy interesado/a en el siguiente producto de su catálogo:
+
+📌 *Producto:* ${producto}
+💰 *Precio:* S/ ${precio}
+✅ *Incluye:* ${badge}
+
+¿Me pueden dar más información y coordinar el pedido? 😊`;
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        document.querySelectorAll('.session-row').forEach(row => {
+            row.style.cursor = 'pointer';
+            row.addEventListener('click', () => {
+                const page = row.closest('.single-page');
+                const titulo = page.querySelector('.section-header h2')?.innerText || 'Producto';
+                const precio = row.querySelector('.amount')?.innerText || '?';
+                const badge = row.querySelector('.free-glass')?.innerText || '';
+                openWhatsApp(titulo, precio, badge);
+            });
+        });
+
+        document.querySelectorAll('.premium-showcase').forEach(showcase => {
+            showcase.style.cursor = 'pointer';
+            showcase.addEventListener('click', () => {
+                const page = showcase.closest('.single-page');
+                const titulo = page.querySelector('.section-header h2')?.innerText || 'Producto';
+                const subtitulo = page.querySelector('.section-header p')?.innerText || '';
+                const msg =
+`🛍️ *Hola Merlty Impresiones!*
+
+Estoy interesado/a en el siguiente producto de su catálogo:
+
+📌 *Producto:* ${titulo}
+📝 *Descripción:* ${subtitulo}
+
+¿Me pueden dar más información y el precio? 😊`;
+                window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+            });
+        });
+
+        const tooltip = document.createElement('div');
+        tooltip.innerText = '💬 ¡Cotiza por WhatsApp!';
+        tooltip.style.cssText = `
+            position: fixed; bottom: 30px; right: 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white; font-family: 'Poppins', sans-serif;
+            font-size: 16px; font-weight: 700;
+            padding: 14px 24px; border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+            cursor: pointer; z-index: 9999;
+            animation: float-btn 3s ease-in-out infinite;
+            transition: transform 0.2s;
+        `;
+        tooltip.addEventListener('click', () => {
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('🛍️ Hola! Vi su catálogo y me gustaría recibir más información sobre sus productos.')}`, '_blank');
+        });
+        document.body.appendChild(tooltip);
+
+        const styleExtra = document.createElement('style');
+        styleExtra.textContent = `
+            @keyframes float-btn {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-8px); }
+            }
+        `;
+        document.head.appendChild(styleExtra);
+    </script>
+<div class="single-page">
+<div class="portada-wrapper">
+<img alt="Merlty Logo" class="portada-logo" src="https://i.postimg.cc/sxLt70Dx/logo.png"/>
+<div class="title-badge-container">
+<div class="title-badge"><h1>CATÁLOGO<br/>2026</h1></div>
+</div>
+<div class="portada-footer">
+<div class="info-item"><i class="fa-solid fa-location-dot"></i> Leoncio Prado 889 - Chiclayo</div>
+<div class="info-item"><i class="fa-solid fa-phone"></i> 978 419 756</div>
+</div>
+</div>
+<span class="page-counter">01</span>
+</div>
+
+    <div class="single-page">
+<div class="page-content">
+<div class="section-header">
+<h2>Nuestra Empresa</h2>
+<p>Compromiso e identidad gráfica en Chiclayo</p>
+</div>
+<div class="mv-vertical-container">
+<div class="mv-block-vertical">
+<h3>Misión</h3>
+<p>Ofrecer soluciones de impresión de nivel inicial que superen las expectativas de calidad. Plasmamos recuerdos únicos mediante diseños innovadores, materiales duraderos y acabados de alta precisión para todas las familias de la región.</p>
+</div>
+<div class="mv-block-vertical" style="border-left-color: #E6007E;">
+<h3 style="color: #F36A2D;">Visión</h3>
+<p>Ser el estudio de diseño e imprenta líder del norte del país en la producción de anuarios y cuadros. Nos enfocamos en destacar a través de la constante innovación de acabados en 3D y una excelencia impecable en la atención.</p>
+</div>
+</div>
+</div>
+<div class="wave-image-container">
+<img alt="Fotografía inferior integrada" class="wave-img" src="https://i.postimg.cc/XvWR0z2m/Camara-12.png"/>
+</div>
+<span class="page-counter light-counter">02</span>
+</div>
+
+    <div class="single-page">
+<img alt="Fotografía de fondo completo" class="full-bg" src="https://i.postimg.cc/j58JtyZN/Gemini-Generated-Image-a61t0xa61t0xa61t.png"/>
+<span class="page-counter light-counter">03</span>
+</div>
+
+    <div class="single-page">
+<div class="new-tag">Nuevo</div>
+<div class="page-content">
+<div class="section-header">
+<h2>Sesiones Temáticas</h2>
+<p>Fotografías con vestuario y ambientación profesional</p>
+</div>
+<div class="premium-showcase">
+<img alt="Vista Principal Sesión Temática" class="premium-main-img" src="https://i.postimg.cc/442JZXTT/Camara-7.png"/>
+<div class="premium-details">
+<img alt="Detalle Sesión Temática" class="premium-secondary-img" src="https://i.postimg.cc/442JZXTT/Camara-7.png"/>
+<ul class="specs-list">
+<li><i class="fa-solid fa-circle-check"></i> <strong>Trajes y Disfraces:</strong> Amplia variedad de vestuarios temáticos.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Ambientación:</strong> Fondos y decorados personalizados.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Edición Profesional:</strong> Retoque y acabado de alta calidad.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Entrega:</strong> Impresión en tamaños desde 20x25 cm hasta 50x60 cm.</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="page-counter">04</span>
+</div>
+
+    <div class="single-page">
+<div class="page-content">
+<div class="section-header">
+<h2>Sesiones Fotográficas</h2>
+<p>Capturamos tus momentos más especiales</p>
+</div>
+<div class="session-row-layout">
+<div class="session-row">
+<div class="session-card">
+<img alt="Sesión 1" src="https://i.postimg.cc/cH5c1vcV/Camara-1.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">60</span></div>
+<span class="free-glass">Vidrio Gratis</span>
+</div>
+<div class="session-card">
+<img alt="Sesión 2" src="https://i.postimg.cc/WzFwdsWX/Camara-2.png"/>
+</div>
+</div>
+<div class="session-row">
+<div class="session-card">
+<img alt="Sesión 3" src="https://i.postimg.cc/FzMgcwwh/Camara-3.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">70</span></div>
+<span class="free-glass">Vidrio Gratis</span>
+</div>
+<div class="session-card">
+<img alt="Sesión 4" src="https://i.postimg.cc/8kj2RWx2/Camara-4.png"/>
+</div>
+</div>
+<div class="session-row">
+<div class="session-card">
+<img alt="Sesión 5" src="https://i.postimg.cc/2jMP2yDR/Camara-5.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">90</span></div>
+<span class="free-glass">Vidrio Gratis</span>
+</div>
+<div class="session-card">
+<img alt="Sesión 6" src="https://i.postimg.cc/pV4gqrHM/Camara-6.png"/>
+</div>
+</div>
+</div>
+</div>
+<span class="page-counter">05</span>
+</div>
+
+    <div class="single-page">
+<img alt="Fotografía de fondo completo" class="full-bg" src="https://i.postimg.cc/hvS1sTPH/Portada-3.png"/>
+<span class="page-counter light-counter">06</span>
+</div>
+
+    <div class="single-page">
+<div class="new-tag">Nuevo</div>
+<div class="page-content">
+<div class="section-header">
+<h2>Cuadros de Graduación</h2>
+<p>Recuerdo único con diseño temático y fotos personalizadas</p>
+</div>
+<div class="premium-showcase">
+<img alt="Vista Principal Cuadro de Graduación" class="premium-main-img" src="https://i.postimg.cc/xT1WTbyt/Chat-GPT-Image-1-jun-2026-14-31-54.png"/>
+<div class="premium-details">
+<img alt="Detalle Cuadro de Graduación" class="premium-secondary-img" src="https://i.postimg.cc/xT1WTbyt/Chat-GPT-Image-1-jun-2026-14-31-54.png"/>
+<ul class="specs-list">
+<li><i class="fa-solid fa-circle-check"></i> <strong>Diseño Temático:</strong> Personajes y ambientación a elección (princesas, héroes, deportes y más).</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Fotos Personalizadas:</strong> Foto principal, sesión temática y foto grupal de la promoción.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Datos del Colegio:</strong> Nombre del alumno, institución, promoción y lista de compañeros.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Acabado Premium:</strong> Impresión HD con relieve 3D, vidrio protector incluido.</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="page-counter">07</span>
+</div>
+
+    <div class="single-page">
+<div class="page-content">
+<div class="section-header">
+<h2>Anuarios de Graduación</h2>
+<p>Cuadros personalizados con diseños temáticos exclusivos</p>
+</div>
+<div class="anuario-row-layout">
+<div class="anuario-row">
+<div class="anuario-card">
+<img alt="Anuario 8" src="https://i.postimg.cc/1XFnwXpG/Camara-8.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">90</span></div>
+<span class="free-glass">Vidrio Gratis</span>
+</div>
+<div class="anuario-card">
+<img alt="Anuario 9" src="https://i.postimg.cc/3NG4mNg2/Camara-9.png"/>
+</div>
+</div>
+<div class="anuario-row">
+<div class="anuario-card">
+<img alt="Anuario 10" src="https://i.postimg.cc/wMNyLMh5/Camara-10.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">120</span></div>
+<span class="free-glass">Vidrio Gratis</span>
+</div>
+<div class="anuario-card">
+<img alt="Anuario 11" src="https://i.postimg.cc/PJDpYJmL/Camara-11.png"/>
+</div>
+</div>
+</div>
+</div>
+<span class="page-counter">08</span>
+</div>
+
+    <div class="single-page">
+<img alt="Fotografía de fondo completo" class="full-bg" src="https://i.postimg.cc/XqQRQCmT/Chat-GPT-Image-2-jun-2026-07-12-55.png"/>
+<span class="page-counter light-counter">09</span>
+</div>
+
+    <div class="single-page">
+<div class="new-tag">Premium</div>
+<div class="page-content">
+<div class="section-header">
+<h2>Tapas Universitarias</h2>
+<p>Letras en relieve dorado sobre cuero sintético premium</p>
+</div>
+<div class="premium-showcase">
+<img alt="Tapa Universitaria Principal" class="premium-main-img" src="https://i.postimg.cc/qRYDSs4n/Chat-GPT-Image-2-jun-2026-07-24-15.png"/>
+<div class="premium-details">
+<img alt="Detalle Tapa Universitaria" class="premium-secondary-img" src="https://i.postimg.cc/qRYDSs4n/Chat-GPT-Image-2-jun-2026-07-24-15.png"/>
+<ul class="specs-list">
+<li><i class="fa-solid fa-circle-check"></i> <strong>Letras en Relieve Dorado:</strong> Grabado al calor con lámina dorada de alta durabilidad.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Cuero Sintético Premium:</strong> Tapa forrada en material resistente color azul marino.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Personalización Total:</strong> Universidad, facultad, escuela, promoción y lema de la generación.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Escudos Institucionales:</strong> Reproducción fiel de los logotipos y sellos oficiales en dorado.</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="page-counter">10</span>
+</div>
+
+    <div class="single-page">
+<div class="page-content">
+<div class="section-header">
+<h2>Diplomas &amp; Tapas Universitarias</h2>
+<p>Reconocimientos en relieve dorado con acabado premium</p>
+</div>
+<div class="session-row-layout">
+<div class="session-row">
+<div class="session-card">
+<img alt="Diploma 1" src="https://i.postimg.cc/8P7Kq96b/111111.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">60</span></div>
+<span class="free-glass">Vidrio Gratis</span>
+</div>
+<div class="session-card">
+<img alt="Diploma 2" src="https://i.postimg.cc/dthHzpyd/2222222.png"/>
+</div>
+</div>
+<div class="session-row">
+<div class="session-card">
+<img alt="Tapa 3" src="https://i.postimg.cc/4NYLrq99/333333333.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">80</span></div>
+<span class="free-glass">Letras Doradas</span>
+</div>
+<div class="session-card">
+<img alt="Tapa 4" src="https://i.postimg.cc/FsYW28LJ/44444444.png"/>
+</div>
+</div>
+<div class="session-row">
+<div class="session-card">
+<img alt="Tapa 5" src="https://i.postimg.cc/MKnPhNQV/55555555555.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">100</span></div>
+<span class="free-glass">Relieve 3D</span>
+</div>
+<div class="session-card">
+<img alt="Tapa 6" src="https://i.postimg.cc/dQHNNwLD/666666.png"/>
+</div>
+</div>
+</div>
+</div>
+<span class="page-counter">11</span>
+</div>
+
+    <div class="single-page">
+<img alt="Fotografía de fondo completo" class="full-bg" src="https://i.postimg.cc/d3M5QJX6/Gemini-Generated-Image-gxxw8jgxxw8jgxxw-(1).png"/>
+<span class="page-counter light-counter">12</span>
+</div>
+
+    <div class="single-page">
+<div class="new-tag">Nuevo</div>
+<div class="page-content">
+<div class="section-header">
+<h2>Tazas con Diseño Personalizado</h2>
+<p>Impresión full color con frases, ilustraciones y nombres a tu gusto</p>
+</div>
+<div class="premium-showcase">
+<img alt="Taza personalizada principal" class="premium-main-img" src="https://i.postimg.cc/3J0DCgkD/Gemini-Generated-Image-4tyuav4tyuav4tyu-(1).png"/>
+<div class="premium-details">
+<img alt="Taza personalizada detalle" class="premium-secondary-img" src="https://i.postimg.cc/3J0DCgkD/Gemini-Generated-Image-4tyuav4tyuav4tyu-(1).png"/>
+<ul class="specs-list">
+<li><i class="fa-solid fa-circle-check"></i> <strong>Diseño 100% Personalizado:</strong> Frases, ilustraciones, nombres o fotos a tu elección.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Sublimación Full Color:</strong> Colores vivos y acabado brillante resistente al lavado.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Taza con Asa de Color:</strong> Disponible en negro, azul, rosa y más colores.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Ideal para Regalos:</strong> Perfecta para cumpleaños, graduaciones y fechas especiales.</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="page-counter">13</span>
+</div>
+
+    <div class="single-page">
+<div class="page-content">
+<div class="section-header">
+<h2>Tazas Personalizadas</h2>
+<p>Sublimación full color y tazas mágicas con tu diseño</p>
+</div>
+<div class="session-row-layout">
+<div class="session-row">
+<div class="session-card">
+<img alt="Taza blanca 1" src="https://i.postimg.cc/85gvjspj/T-5.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">15</span></div>
+<span class="free-glass">Taza Blanca</span>
+</div>
+<div class="session-card">
+<img alt="Taza blanca 2" src="https://i.postimg.cc/vBwncDYn/T-6.png"/>
+</div>
+</div>
+<div class="session-row">
+<div class="session-card">
+<img alt="Taza diseño 1" src="https://i.postimg.cc/sXCWv1jM/T-3.webp"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">20</span></div>
+<span class="free-glass">Con Diseño</span>
+</div>
+<div class="session-card">
+<img alt="Taza diseño 2" src="https://i.postimg.cc/gJbhnrz3/T-4.png"/>
+</div>
+</div>
+<div class="session-row">
+<div class="session-card">
+<img alt="Taza mágica 1" src="https://i.postimg.cc/9MH9rzmZ/T-1.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">25</span></div>
+<span class="free-glass">Taza Mágica</span>
+</div>
+<div class="session-card">
+<img alt="Taza mágica 2" src="https://i.postimg.cc/B6fFXtSK/T-2.png"/>
+</div>
+</div>
+</div>
+</div>
+<span class="page-counter">14</span>
+</div>
+
+    <div class="single-page">
+<img alt="Fotografía de fondo completo" class="full-bg" src="https://i.postimg.cc/mk57j4fz/Gemini-Generated-Image-4ssu8c4ssu8c4ssu.png"/>
+<span class="page-counter light-counter">15</span>
+</div>
+
+    <div class="single-page">
+<div class="new-tag">Nuevo</div>
+<div class="page-content">
+<div class="section-header">
+<h2>Polos Estampados</h2>
+<p>Tu diseño impreso en polos de calidad con acabado profesional</p>
+</div>
+<div class="premium-showcase">
+<img alt="Polo estampado principal" class="premium-main-img" src="https://i.postimg.cc/fWCZ8vqz/Gemini-Generated-Image-ktaf1jktaf1jktaf.png"/>
+<div class="premium-details">
+<img alt="Polo estampado detalle" class="premium-secondary-img" src="https://i.postimg.cc/fWCZ8vqz/Gemini-Generated-Image-ktaf1jktaf1jktaf.png"/>
+<ul class="specs-list">
+<li><i class="fa-solid fa-circle-check"></i> <strong>Sublimación Full Color:</strong> Colores vivos y nítidos que no se despegan ni destiñen.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Diseño 100% Personalizado:</strong> Logos, frases, personajes, fotos o cualquier arte a tu elección.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Tallas S al XXL:</strong> Disponible en todas las tallas para niños y adultos.</li>
+<li><i class="fa-solid fa-circle-check"></i> <strong>Ideal para Grupos:</strong> Uniforme para colegios, empresas, eventos y promociones.</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="page-counter">16</span>
+</div>
+
+    <div class="single-page">
+<div class="page-content">
+<div class="section-header">
+<h2>Polos Estampados</h2>
+<p>Diseño personalizado con sublimación y serigrafía full color</p>
+</div>
+<div class="session-row-layout">
+<div class="session-row">
+<div class="session-card">
+<img alt="Polo 1" src="https://i.postimg.cc/B6v8Vzgf/Gemini-Generated-Image-2bdjki2bdjki2bdj.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">35</span></div>
+<span class="free-glass">Estampado</span>
+</div>
+<div class="session-card">
+<img alt="Polo 2" src="https://i.postimg.cc/76QC8NsS/Gemini-Generated-Image-79iri879iri879ir.png"/>
+</div>
+</div>
+<div class="session-row">
+<div class="session-card">
+<img alt="Polo 3" src="https://i.postimg.cc/3Rby5ZSg/Gemini-Generated-Image-9ura5a9ura5a9ura.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">35</span></div>
+<span class="free-glass">Full Color</span>
+</div>
+<div class="session-card">
+<img alt="Polo 4" src="https://i.postimg.cc/mkzPbFJw/Gemini-Generated-Image-a0winra0winra0wi.png"/>
+</div>
+</div>
+<div class="session-row">
+<div class="session-card">
+<img alt="Polo 5" src="https://i.postimg.cc/ydrJ4TQ9/Gemini-Generated-Image-b2nkpb2nkpb2nkpb.png"/>
+</div>
+<div class="price-tag-block">
+<div class="price-badge-circle"><span class="currency">S/</span><span class="amount">35</span></div>
+<span class="free-glass">Personalizado</span>
+</div>
+<div class="session-card">
+<img alt="Polo 6" src="https://i.postimg.cc/WzFd2JCh/Gemini-Generated-Image-h9obpih9obpih9ob-(1).png"/>
+</div>
+</div>
+</div>
+</div>
+<span class="page-counter">17</span>
+</div>
+
+    <div class="single-page">
+<div class="page-content" style="justify-content: center; text-align: center; padding: 10%;">
+<h2 style="font-family: 'Poppins', sans-serif; font-size: 70px; font-weight: 900; color: #1e293b; line-height: 1.1;">
+                ¿LISTOS PARA<br/><span style="color: #E6007E;">COTIZAR?</span>
+</h2>
+<div style="height: 10px; width: 160px; background: #F36A2D; margin: 40px auto;"></div>
+<p style="font-family: 'Urbanist', sans-serif; font-size: 32px; color: #475569; margin-bottom: 60px;">
+                Coordinación y entrega directa de muestras físicas para colegios e instituciones en Chiclayo y provincias.
+            </p>
+<div style="background: #f8fafc; border: 4px dashed #e2e8f0; border-radius: 24px; padding: 35px 60px; display: inline-block; font-family: 'Poppins', sans-serif; font-size: 40px; font-weight: 800; color: #E6007E;">
+<i class="fa-brands fa-whatsapp" style="color: #25D366; font-size: 48px; margin-right: 10px;"></i> 978 419 756
+            </div>
+</div>
+<span class="page-counter">18</span>
+</div>
+
+    </body>
+</html>
