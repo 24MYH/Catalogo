@@ -3,7 +3,12 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=1280" name="viewport"/>
+<style>
+  html {
+    zoom: calc(100vw / 1280);
+  }
+</style>
 <title>Catálogo Real HD - Merlty Impresiones</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -215,13 +220,17 @@
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             border: 2px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
         }
 
         .session-card img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            flex: 1;
+            min-height: 0;
+            object-fit: contain;
             display: block;
+            padding: 10px;
         }
 
         .price-tag-block {
@@ -435,7 +444,8 @@
             transform: scale(1.04);
             filter: brightness(1.08);
         }
-    </style>
+    
+</style>
 </head>
 <body>
 
@@ -531,11 +541,11 @@ Estoy interesado/a en el siguiente producto de su catálogo:
         const tooltip = document.createElement('div');
         tooltip.innerText = '💬 ¡Cotiza por WhatsApp!';
         tooltip.style.cssText = `
-            position: fixed; bottom: 30px; right: 30px;
+            position: fixed; bottom: 30px;
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white; font-family: 'Poppins', sans-serif;
-            font-size: 16px; font-weight: 700;
-            padding: 14px 24px; border-radius: 50px;
+            font-size: 20px; font-weight: 700;
+            padding: 18px 30px; border-radius: 50px;
             box-shadow: 0 8px 30px rgba(37,211,102,0.5);
             cursor: pointer; z-index: 9999;
             animation: float-btn 3s ease-in-out infinite;
@@ -545,6 +555,20 @@ Estoy interesado/a en el siguiente producto de su catálogo:
             window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('🛍️ Hola! Vi su catálogo y me gustaría recibir más información sobre sus productos.')}`, '_blank');
         });
         document.body.appendChild(tooltip);
+
+        function posicionarBoton() {
+            const pagina = document.querySelector('.single-page');
+            if (pagina) {
+                const rect = pagina.getBoundingClientRect();
+                const rightOffset = window.innerWidth - rect.right;
+                tooltip.style.right = Math.max(rightOffset + 20, 20) + 'px';
+            }
+        }
+        window.addEventListener('load', posicionarBoton);
+        window.addEventListener('resize', posicionarBoton);
+        window.addEventListener('scroll', posicionarBoton);
+        setTimeout(posicionarBoton, 100);
+        setTimeout(posicionarBoton, 500);
 
         const styleExtra = document.createElement('style');
         styleExtra.textContent = `
@@ -677,7 +701,7 @@ Estoy interesado/a en el siguiente producto de su catálogo:
 <div class="new-tag">Nuevo</div>
 <div class="page-content">
 <div class="section-header">
-<h2>Cuadros de Graduación</h2>
+<h2>Cuadros Acrílico Resinado</h2>
 <p>Recuerdo único con diseño temático y fotos personalizadas</p>
 </div>
 <div class="premium-showcase">
@@ -699,32 +723,52 @@ Estoy interesado/a en el siguiente producto de su catálogo:
     <div class="single-page">
 <div class="page-content">
 <div class="section-header">
-<h2>Anuarios de Graduación</h2>
+<h2>Cuadros  de Graduación</h2>
 <p>Cuadros personalizados con diseños temáticos exclusivos</p>
 </div>
 <div class="anuario-row-layout">
 <div class="anuario-row">
-<div class="anuario-card">
-<img alt="Anuario 8" src="https://i.postimg.cc/1XFnwXpG/Camara-8.png"/>
+<div class="anuario-card" style="flex-direction:column;justify-content:space-between;padding:18px;">
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:26px;font-weight:800;color:#E6007E;margin-top:40px;margin-bottom:10px;">🌸 Cuadro Temático — Niña</div>
+<img alt="Anuario 8" src="https://i.postimg.cc/1XFnwXpG/Camara-8.png" style="width:100%;height:auto;object-fit:contain;"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;margin-top:-40px;">
+<div style="font-size:19px;color:#555;">Medidas: 30×40 cm</div>
+<div style="font-size:18px;color:#F36A2D;font-weight:700;margin-top:4px;">📸 Incluye toma fotográfica</div>
+</div>
 </div>
 <div class="price-tag-block">
 <div class="price-badge-circle"><span class="currency">S/</span><span class="amount">90</span></div>
 <span class="free-glass">Vidrio Gratis</span>
 </div>
-<div class="anuario-card">
-<img alt="Anuario 9" src="https://i.postimg.cc/3NG4mNg2/Camara-9.png"/>
+<div class="anuario-card" style="flex-direction:column;justify-content:space-between;padding:18px;">
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:26px;font-weight:800;color:#1d4ed8;margin-top:40px;margin-bottom:10px;">⭐ Cuadro Temático — Niño</div>
+<img alt="Anuario 9" src="https://i.postimg.cc/3NG4mNg2/Camara-9.png" style="width:100%;height:auto;object-fit:contain;"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;margin-top:-40px;">
+<div style="font-size:19px;color:#555;">Medidas: 30×40 cm</div>
+<div style="font-size:18px;color:#F36A2D;font-weight:700;margin-top:4px;">📸 Incluye toma fotográfica</div>
+</div>
 </div>
 </div>
 <div class="anuario-row">
-<div class="anuario-card">
-<img alt="Anuario 10" src="https://i.postimg.cc/wMNyLMh5/Camara-10.png"/>
+<div class="anuario-card" style="flex-direction:column;justify-content:space-between;padding:18px;">
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:26px;font-weight:800;color:#E6007E;margin-top:40px;margin-bottom:10px;">🌸 Cuadro Selfie — Niña</div>
+<img alt="Anuario 10" src="https://i.postimg.cc/wMNyLMh5/Camara-10.png" style="width:100%;height:auto;object-fit:contain;"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;margin-top:-40px;">
+<div style="font-size:19px;color:#555;">Medidas: 40×50 cm</div>
+<div style="font-size:18px;color:#F36A2D;font-weight:700;margin-top:4px;">📸 Incluye toma fotográfica</div>
+</div>
 </div>
 <div class="price-tag-block">
 <div class="price-badge-circle"><span class="currency">S/</span><span class="amount">120</span></div>
 <span class="free-glass">Vidrio Gratis</span>
 </div>
-<div class="anuario-card">
-<img alt="Anuario 11" src="https://i.postimg.cc/PJDpYJmL/Camara-11.png"/>
+<div class="anuario-card" style="flex-direction:column;justify-content:space-between;padding:18px;">
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:26px;font-weight:800;color:#1d4ed8;margin-top:40px;margin-bottom:10px;">⭐ Cuadro Selfie — Niño</div>
+<img alt="Anuario 11" src="https://i.postimg.cc/PJDpYJmL/Camara-11.png" style="width:100%;height:auto;object-fit:contain;"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;margin-top:-40px;">
+<div style="font-size:19px;color:#555;">Medidas: 40×50 cm</div>
+<div style="font-size:18px;color:#F36A2D;font-weight:700;margin-top:4px;">📸 Incluye toma fotográfica</div>
+</div>
 </div>
 </div>
 </div>
@@ -770,6 +814,7 @@ Estoy interesado/a en el siguiente producto de su catálogo:
 <div class="session-row">
 <div class="session-card">
 <img alt="Diploma 1" src="https://i.postimg.cc/8P7Kq96b/111111.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Biocuero</div>
 </div>
 <div class="price-tag-block">
 <div class="price-badge-circle"><span class="currency">S/</span><span class="amount">60</span></div>
@@ -777,11 +822,13 @@ Estoy interesado/a en el siguiente producto de su catálogo:
 </div>
 <div class="session-card">
 <img alt="Diploma 2" src="https://i.postimg.cc/dthHzpyd/2222222.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Biocuero</div>
 </div>
 </div>
 <div class="session-row">
 <div class="session-card">
 <img alt="Tapa 3" src="https://i.postimg.cc/4NYLrq99/333333333.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Funda transporte de cuero</div>
 </div>
 <div class="price-tag-block">
 <div class="price-badge-circle"><span class="currency">S/</span><span class="amount">80</span></div>
@@ -789,11 +836,13 @@ Estoy interesado/a en el siguiente producto de su catálogo:
 </div>
 <div class="session-card">
 <img alt="Tapa 4" src="https://i.postimg.cc/FsYW28LJ/44444444.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Funda transporte de cuero</div>
 </div>
 </div>
 <div class="session-row">
 <div class="session-card">
 <img alt="Tapa 5" src="https://i.postimg.cc/MKnPhNQV/55555555555.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Cartulina opalina</div>
 </div>
 <div class="price-tag-block">
 <div class="price-badge-circle"><span class="currency">S/</span><span class="amount">100</span></div>
@@ -801,6 +850,7 @@ Estoy interesado/a en el siguiente producto de su catálogo:
 </div>
 <div class="session-card">
 <img alt="Tapa 6" src="https://i.postimg.cc/dQHNNwLD/666666.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Cartulina opalina</div>
 </div>
 </div>
 </div>
@@ -846,6 +896,7 @@ Estoy interesado/a en el siguiente producto de su catálogo:
 <div class="session-row">
 <div class="session-card">
 <img alt="Taza blanca 1" src="https://i.postimg.cc/85gvjspj/T-5.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Tazas blancas</div>
 </div>
 <div class="price-tag-block">
 <div class="price-badge-circle"><span class="currency">S/</span><span class="amount">15</span></div>
@@ -853,11 +904,13 @@ Estoy interesado/a en el siguiente producto de su catálogo:
 </div>
 <div class="session-card">
 <img alt="Taza blanca 2" src="https://i.postimg.cc/vBwncDYn/T-6.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Tazas blancas</div>
 </div>
 </div>
 <div class="session-row">
 <div class="session-card">
 <img alt="Taza diseño 1" src="https://i.postimg.cc/sXCWv1jM/T-3.webp"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Tazas personalizadas</div>
 </div>
 <div class="price-tag-block">
 <div class="price-badge-circle"><span class="currency">S/</span><span class="amount">20</span></div>
@@ -865,11 +918,13 @@ Estoy interesado/a en el siguiente producto de su catálogo:
 </div>
 <div class="session-card">
 <img alt="Taza diseño 2" src="https://i.postimg.cc/gJbhnrz3/T-4.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Tazas personalizadas</div>
 </div>
 </div>
 <div class="session-row">
 <div class="session-card">
-<img alt="Taza mágica 1" src="https://i.postimg.cc/9MH9rzmZ/T-1.png"/>
+<img alt="Taza mágica 1" src="https://i.postimg.cc/3wQ2899b/Chat-GPT-Image-4-jun-2026-15-07-03.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Tazas mágicas</div>
 </div>
 <div class="price-tag-block">
 <div class="price-badge-circle"><span class="currency">S/</span><span class="amount">25</span></div>
@@ -877,6 +932,7 @@ Estoy interesado/a en el siguiente producto de su catálogo:
 </div>
 <div class="session-card">
 <img alt="Taza mágica 2" src="https://i.postimg.cc/B6fFXtSK/T-2.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Tazas mágicas</div>
 </div>
 </div>
 </div>
@@ -922,6 +978,7 @@ Estoy interesado/a en el siguiente producto de su catálogo:
 <div class="session-row">
 <div class="session-card">
 <img alt="Polo 1" src="https://i.postimg.cc/B6v8Vzgf/Gemini-Generated-Image-2bdjki2bdjki2bdj.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Polo algodón estampado</div>
 </div>
 <div class="price-tag-block">
 <div class="price-badge-circle"><span class="currency">S/</span><span class="amount">35</span></div>
@@ -929,11 +986,13 @@ Estoy interesado/a en el siguiente producto de su catálogo:
 </div>
 <div class="session-card">
 <img alt="Polo 2" src="https://i.postimg.cc/76QC8NsS/Gemini-Generated-Image-79iri879iri879ir.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Polo algodón estampado</div>
 </div>
 </div>
 <div class="session-row">
 <div class="session-card">
 <img alt="Polo 3" src="https://i.postimg.cc/3Rby5ZSg/Gemini-Generated-Image-9ura5a9ura5a9ura.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Polo oversize estampado</div>
 </div>
 <div class="price-tag-block">
 <div class="price-badge-circle"><span class="currency">S/</span><span class="amount">35</span></div>
@@ -941,18 +1000,21 @@ Estoy interesado/a en el siguiente producto de su catálogo:
 </div>
 <div class="session-card">
 <img alt="Polo 4" src="https://i.postimg.cc/mkzPbFJw/Gemini-Generated-Image-a0winra0winra0wi.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Polo oversize estampado</div>
 </div>
 </div>
 <div class="session-row">
 <div class="session-card">
 <img alt="Polo 5" src="https://i.postimg.cc/ydrJ4TQ9/Gemini-Generated-Image-b2nkpb2nkpb2nkpb.png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Polo personalizado</div>
 </div>
 <div class="price-tag-block">
 <div class="price-badge-circle"><span class="currency">S/</span><span class="amount">35</span></div>
 <span class="free-glass">Personalizado</span>
 </div>
 <div class="session-card">
-<img alt="Polo 6" src="https://i.postimg.cc/WzFd2JCh/Gemini-Generated-Image-h9obpih9obpih9ob-(1).png"/>
+<img alt="Polo 6" src="https://i.postimg.cc/43KFYvHf/Gemini-Generated-Image-rxo6f6rxo6f6rxo6-(1).png"/>
+<div style="text-align:center;font-family:'Poppins',sans-serif;font-size:35px;font-weight:700;color:#333;margin-top:8px;">Polo personalizado</div>
 </div>
 </div>
 </div>
@@ -971,7 +1033,21 @@ Estoy interesado/a en el siguiente producto de su catálogo:
             </p>
 <div style="background: #f8fafc; border: 4px dashed #e2e8f0; border-radius: 24px; padding: 35px 60px; display: inline-block; font-family: 'Poppins', sans-serif; font-size: 40px; font-weight: 800; color: #E6007E;">
 <i class="fa-brands fa-whatsapp" style="color: #25D366; font-size: 48px; margin-right: 10px;"></i> 978 419 756
-            </div>
+</div>
+<div style="display: flex; justify-content: center; gap: 50px; margin-top: 60px;">
+<a href="https://www.instagram.com/merly_impresiones/" target="_blank" style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-decoration: none;">
+<div style="width: 110px; height: 110px; border-radius: 28px; background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(220,39,67,0.35);">
+<i class="fa-brands fa-instagram" style="color: #fff; font-size: 60px;"></i>
+</div>
+<span style="font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 700; color: #333;">merly_impresiones</span>
+</a>
+<a href="https://www.facebook.com/p/Merly-Impresiones-100070817510932/" target="_blank" style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-decoration: none;">
+<div style="width: 110px; height: 110px; border-radius: 28px; background: #1877F2; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(24,119,242,0.35);">
+<i class="fa-brands fa-facebook-f" style="color: #fff; font-size: 60px;"></i>
+</div>
+<span style="font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 700; color: #333;">Merly Impresiones</span>
+</a>
+</div>
 </div>
 <span class="page-counter">18</span>
 </div>
